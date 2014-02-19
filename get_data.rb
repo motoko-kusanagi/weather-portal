@@ -2,6 +2,7 @@
 
 require 'open-uri'
 require 'nokogiri'
+require 'mysql'
 
 weather = Struct.new(:name, :temp, :wind, :date)
 valley = []
@@ -23,4 +24,14 @@ def xml_parse(what)
 end
 
 xml_parse(xml_temperature.to_s)
-file_temperature.write("#{xml_parse(xml_temperature.to_s)}")
+puts "#{xml_parse(xml_temperature.to_s)}"
+
+begin
+  db = Mysql.new('localhost', 'ruby', 'github', 'topr')
+#  db = Mysql.new('localhost', 'ruby', 'github')
+rescue Mysql::Error
+  puts "Oh noes! Damn... we could not connect to our database. -.-;"
+  exit 1
+end
+
+  db.query("INSERT INTO temperature (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO) VALUES (#{xml_parse(xml_temperature.to_s)});")
