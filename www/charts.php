@@ -53,7 +53,7 @@ $jsonTEMP = json_encode($table);
 
     $rows[] = array('c' => $temp);
   }
-
+ 
   $table['rows'] = $rows;
 
 $json_windAVG = json_encode($table);
@@ -86,7 +86,6 @@ $json_windMAX = json_encode($table);
 
 ?>
 
-//*** HTML BODY ***//
 
 <html>
     <head>
@@ -109,6 +108,14 @@ $json_windMAX = json_encode($table);
       var data = new google.visualization.DataTable(<?=$jsonTEMP?>);
           var options = {
           title: 'TEMPERATURA [*C]',
+	  fontName: 'Calibri',
+	  curveType: 'function',
+	  // explorer: {}, // zoom chart!
+	  crosshair: { trigger: 'both' },
+	  // hAxis.gridlines.count: 5,
+	  //hAxis.textPosition: 'in',
+	  legend: {position: 'right', textStyle: {color: 'black', fontSize: 16}},
+	  selectionMode: 'multiple',
           is3D: 'true',
           width: 1024,
           height: 400
@@ -127,7 +134,9 @@ $json_windMAX = json_encode($table);
       var data = new google.visualization.DataTable(<?=$json_windAVG?>);
           var options = {
           title: 'SREDNIA PREDKOSC WIATRU [m/s]',
-          is3D: 'true',
+	  fontName: 'Calibri',
+          curveType: 'function',
+	  is3D: 'true',
           width: 1024,
           height: 400
         };
@@ -143,6 +152,8 @@ $json_windMAX = json_encode($table);
       var data = new google.visualization.DataTable(<?=$json_windMAX?>);
           var options = {
           title: 'MAKSYMALNA PREDKOSC WIATRU [m/s]',
+	  fontName: 'Calibri',
+	  curveType: 'function',
           is3D: 'true',
           width: 1024,
           height: 400
