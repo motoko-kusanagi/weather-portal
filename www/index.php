@@ -1,5 +1,4 @@
 <?php
-
   $con = mysql_connect('localhost', 'ruby', 'github') or die('Error connecting to server');
   mysql_select_db('topr', $con);
   // write your SQL query here (you may use parameters from $_GET or $_POST if you need them)
@@ -53,7 +52,7 @@ $jsonTEMP = json_encode($table);
 
     $rows[] = array('c' => $temp);
   }
- 
+
   $table['rows'] = $rows;
 
 $json_windAVG = json_encode($table);
@@ -83,12 +82,11 @@ $json_windAVG = json_encode($table);
   $table['rows'] = $rows;
 
 $json_windMAX = json_encode($table);
-
 ?>
 
-
-<html>
-    <head>
+<!doctype html>
+<html lang="en">
+<head>
     <!--Load the Ajax API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -117,7 +115,7 @@ $json_windMAX = json_encode($table);
 	  legend: {position: 'right', textStyle: {color: 'black', fontSize: 16}},
 	  selectionMode: 'multiple',
           is3D: 'true',
-          width: 1024,
+          width: "50%",
           height: 400
         };
       // Instantiate and draw our chart, passing in some options.
@@ -137,7 +135,7 @@ $json_windMAX = json_encode($table);
 	  fontName: 'Calibri',
           curveType: 'function',
 	  is3D: 'true',
-          width: 1024,
+          width: "50%",
           height: 400
         };
       // Instantiate and draw our chart, passing in some options.
@@ -155,7 +153,7 @@ $json_windMAX = json_encode($table);
 	  fontName: 'Calibri',
 	  curveType: 'function',
           is3D: 'true',
-          width: 1024,
+          width: "50%",
           height: 400
         };
       // Instantiate and draw our chart, passing in some options.
@@ -165,10 +163,50 @@ $json_windMAX = json_encode($table);
     }
 
     </script>
-  </head>
-  <body>
-    <div id="chart_div_temp"></div>
-    <div id="chart_div_wind_avg"></div>
-    <div id="chart_div_wind_max"></div>
-  </body>
+
+
+	<meta charset="utf-8" />
+	<style>
+	    body { font-family: Helvetica, Arial, sans-serif; line-height: 1.3em; -webkit-font-smoothing: antialiased; }
+	    .container {
+	        width: 70%;
+	        margin: 20px auto;
+	        background-color: #FFF;
+	        padding: 20px;
+	    }
+	    pre, code {
+        font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+        font-size: 12px;
+        color: #333;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+      }
+      pre { border: 1px solid #CCC; background-color: #EEE; color: #333; padding: 10px; overflow: scroll; }
+      code { padding: 2px 4px; background-color: #F7F7F9; border: 1px solid #E1E1E8; color: #D14; }
+	</style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOPR</h1>
+        <p>
+		<div id="chart_div_temp"></div>
+		<div id="chart_div_wind_avg"></div>
+		<div id="chart_div_wind_max"></div>
+	</p>
+    </div>
+	<script src="libs/jquery/jquery.js"></script>
+    <script src="libs/jquery.backstretch.js"></script>
+	<script>
+        $.backstretch([
+          "imgs/1.jpg",
+          "imgs/2.jpg",
+          "imgs/3.jpg",
+	  "imgs/4.jpg"
+        ], {
+            fade: 750,
+            duration: 60000
+        });
+    </script>
+</body>
 </html>
