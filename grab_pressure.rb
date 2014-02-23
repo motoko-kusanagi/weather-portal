@@ -20,4 +20,4 @@ end
 
 datetime = Time.now.utc.to_s.gsub(" UTC","")
 
-db.query("INSERT INTO pressure (KASPROWY_WIERCH, LOMNICA, DATE_SYSTEM) VALUES (#{text_parse(pressure[25].text)}, #{text_parse(pressure[30].text)}, '#{datetime}');")
+db.query("INSERT INTO pressure (KASPROWY_WIERCH, LOMNICA, DATE_SYSTEM) VALUES (#{text_parse(pressure[20].text)}, #{text_parse(pressure[30].text)}, '#{datetime}');")
