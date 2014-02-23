@@ -12,6 +12,10 @@ xml_windAVG = xml.xpath('//wiatr/silaAvg').map { |node| node.text }
 xml_windMAX = xml.xpath('//wiatr/silaMax').map { |node| node.text }
 xml_windDIR = xml.xpath('//wiatr/kierunek').map { |node| node.text }
 
+url = Nokogiri::HTML(open("http://www.webkamery.sk/webkamera-live/55-lomnicky-stit"),'utf-8')
+lomnica = url.css("div[class='right_webkamera_info'] span[class='value']")
+lomnica = lomnica[0].text.gsub(" °C","").gsub(",",".")
+
 datetime = Time.now.utc.to_s.gsub(" UTC","")
 xml_date = xml_date.to_s
 
@@ -26,7 +30,7 @@ rescue Mysql::Error
   exit 1
 end
 
-db.query("INSERT INTO temperature (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{xml_parse(xml_temperature.to_s)}, '#{xml_date}', '#{datetime}');")
+db.query("INSERT INTO temperature (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, LOMNICKY_STIT, DATE_XML, DATE_SYSTEM) VALUES (#{xml_parse(xml_temperature.to_s)}, '#{lomnica.to_s}', '#{xml_date}', '#{datetime}');")
 db.query("INSERT INTO wind_speed_averange (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{xml_parse(xml_windAVG.to_s)}, '#{xml_date}', '#{datetime}');")
 db.query("INSERT INTO wind_speed_maximum (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{xml_parse(xml_windMAX.to_s)}, '#{xml_date}', '#{datetime}');")
 db.query("INSERT INTO wind_direction (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{xml_parse(xml_windDIR.to_s)}, '#{xml_date}', '#{datetime}');")

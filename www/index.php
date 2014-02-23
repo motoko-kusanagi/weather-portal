@@ -13,7 +13,8 @@
     array('label' => 'Date', 'type' => 'string'),
     array('label' => 'Goryczkowa', 'type' => 'number'),
     array('label' => 'Morskie Oko', 'type' => 'number'),
-    array('label' => 'Piec Stawow', 'type' => 'number')
+    array('label' => 'Piec Stawow', 'type' => 'number'),
+    array('label' => 'Lomnica', 'type' => 'number')
   );
 
   $rows = array();
@@ -23,6 +24,7 @@
     $temp[] = array('v' => $r['GORYCZKOWA']);
     $temp[] = array('v' => $r['MORSKIE_OKO']);
     $temp[] = array('v' => $r['PIEC_STAWOW']);
+    $temp[] = array('v' => $r['LOMNICKY_STIT']);
 
     $rows[] = array('c' => $temp);
   }
