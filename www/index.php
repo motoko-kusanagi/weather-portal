@@ -114,7 +114,7 @@ $json_windMAX = json_encode($table);
 	  crosshair: { trigger: 'both' },
 	  // hAxis.gridlines.count: 5,
 	  //hAxis.textPosition: 'in',
-	  legend: {position: 'right', textStyle: {color: 'black', fontSize: 16}},
+	  legend: {position: 'right', textStyle: {color: 'black', fontSize: 14}},
 	  selectionMode: 'multiple',
           is3D: 'true',
           width: "50%",
@@ -190,7 +190,7 @@ $json_windMAX = json_encode($table);
 </head>
 <body>
     <div class="container">
-        <h1>TOPR</h1>
+        <h1><a href="http://192.168.101.1/chart/">TOPR</a> / <a href="cams.php">KAMERY</a></h1>
         <p>
 		<div id="chart_div_temp"></div>
 		<div id="chart_div_wind_avg"></div>
