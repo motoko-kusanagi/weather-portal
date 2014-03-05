@@ -15,7 +15,7 @@ links = []
 
 # topr / moko
 links << "http://kamery.topr.pl/moko/moko_01.jpg"
-links << "http://kamery.topr.pl/moko/moko_02.jpg"
+links << "http://kamery.topr.pl/moko_TPN/moko_02.jpg"
 # topr / piec stawow
 links << "http://kamery.topr.pl/stawy2/stawy2.jpg"
 links << "http://kamery.topr.pl/stawy1/stawy1.jpg"
@@ -25,7 +25,13 @@ links << "http://kamery.topr.pl/goryczkowa/gorycz.jpg"
 # topr / chocholowska
 links << "http://kamery.topr.pl/chocholowska/chocholow.jpg"
 
+# slow / lomnica
+links << "http://www.webkamery.sk/webcams/lomnicak-l.jpg"
+
 # download photo
 links.each do |camera|
+  puts "/var/www/chart/cameras/#{File.basename(camera)}"
+  puts get_pic(camera)
+  puts "#"
    File.write("/var/www/chart/cameras/#{File.basename(camera)}", Net::HTTP.get(URI.parse(camera))) if get_pic(camera) == "200"
 end
