@@ -1,0 +1,60 @@
+li {
+	list-style:none !important;
+	color:#FFF;
+	padding:10px;
+	font-size:25px;
+	font-family: Impact, Charcoal, sans-serif;
+	text-decoration:none;
+	}
+
+li > a:after { content: ' »'; } /* Change this in order to change the Dropdown symbol */
+
+li > a:only-child:after { content: ''; }  
+
+li {
+	list-style:none !important;
+	color:#FFF;
+	padding:10px;
+	font-size:25px;
+	text-decoration:none;
+	}
+
+nav ul {
+	background-color:#64abfb;
+	padding:0;
+	margin:0;
+	}
+
+nav ul li {
+	list-style: none; 
+	line-height:44px;
+	float:left;
+	# background-color:#64abfb;
+	# background-color:#000000;
+	}
+
+nav ul li a {
+	color:#000000;
+	padding:10px;
+	font-size:25px;
+	text-decoration:none;
+}
+
+li a:hover {
+	border-bottom:0px #FFF solid; 
+	color: #FFFFFF;
+	}
+	
+nav ul li ul { display:none; } /* Makes the Dropdown menu Hidden by default */
+
+nav ul li:hover  ul  { /* Displayes the dropNav when Hovered over the nav item with the .drop class */
+	z-index:99999;
+	display:list-item !important;
+	position:absolute;
+	margin-top:5px;
+	margin-left:-10px;
+	}
+
+nav ul li:hover  ul li {
+	float:none;
+	}

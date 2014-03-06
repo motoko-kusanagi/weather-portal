@@ -89,6 +89,10 @@ $json_windMAX = json_encode($table);
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" type="text/css" href="css/menu.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <meta charset="UTF-8" />
+
     <!--Load the Ajax API-->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -165,36 +169,21 @@ $json_windMAX = json_encode($table);
     }
 
     </script>
-
-
-	<meta charset="utf-8" />
-	<style>
-	    body { font-family: Helvetica, Arial, sans-serif; line-height: 1.3em; -webkit-font-smoothing: antialiased; }
-	    .container {
-	        width: 70%;
-	        margin: 20px auto;
-	        background-color: #FFF;
-	        padding: 20px;
-	    }
-	    pre, code {
-        font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-        font-size: 12px;
-        color: #333;
-        -webkit-border-radius: 3px;
-        -moz-border-radius: 3px;
-        border-radius: 3px;
-      }
-      pre { border: 1px solid #CCC; background-color: #EEE; color: #333; padding: 10px; overflow: scroll; }
-      code { padding: 2px 4px; background-color: #F7F7F9; border: 1px solid #E1E1E8; color: #D14; }
-	</style>
 </head>
 <body>
     <div class="container">
-        <h1><a href="http://192.168.101.1/chart/">TOPR</a> / <a href="cams.php">KAMERY</a></h1>
+
+  <?php
+    include 'menu.html';
+  ?>
+
         <p>
 		<div id="chart_div_temp"></div>
+		<br>
 		<div id="chart_div_wind_avg"></div>
+		<br>
 		<div id="chart_div_wind_max"></div>
+		<br>
 	</p>
     </div>
 	<script src="libs/jquery/jquery.js"></script>
