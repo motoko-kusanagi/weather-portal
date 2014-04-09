@@ -16,6 +16,10 @@ url = Nokogiri::HTML(open("http://www.webkamery.sk/webkamera-live/55-lomnicky-st
 lomnica = url.css("div[class='right_webkamera_info'] span[class='value']")
 lomnica = lomnica[0].text.gsub(" °C","").gsub(",",".")
 
+url_krk = Nokogiri::HTML(open("http://zdpk.krakow.pl/pub/meteo/zdpk01/Current_Vantage.htm"),'UTF-8')
+url_krk = url_krk.css("tr font[color='#3366FF']")
+krakow = url_krk[0].text.gsub("°C","")
+
 datetime = Time.now.utc.to_s.gsub(" UTC","")
 xml_date = xml_date.to_s
 
@@ -42,7 +46,7 @@ temp_values = xml_parse(xml_temperature.to_s).split(",")
 goryczkowa = check_value(temp_values[0].gsub(" ","")).to_s
 piec_stawow = check_value(temp_values[1].gsub(" ","")).to_s
 morskie_oko = check_value(temp_values[2].gsub(" ","")).to_s
-db.query("INSERT INTO temperature (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, LOMNICKY_STIT, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{lomnica.to_s}', '#{xml_date}', '#{datetime}');")
+db.query("INSERT INTO temperature (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, LOMNICKY_STIT, KRAKOW, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{lomnica.to_s}', '#{krakow}', '#{xml_date}', '#{datetime}');")
 
 wind_avg_values = xml_parse(xml_windAVG.to_s).split(",")
 goryczkowa = check_value(wind_avg_values[0].gsub(" ","")).to_s
