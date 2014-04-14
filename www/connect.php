@@ -4,4 +4,5 @@
 
   $date_last = date('Y-m-d', strtotime('-2 week'));
   $date_now = date('Y-m-d', strtotime('+1 day'));
+  $date_month = date('Y-m-d', strtotime('-1 month'));
 ?>
