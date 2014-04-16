@@ -65,23 +65,23 @@ rescue Mysql::Error
   exit 1
 end
 
-#temp_values = xml_parse(xml_temperature.to_s).split(",")
-#goryczkowa = check_value(temp_values[0].gsub(" ","")).to_s
-#piec_stawow = check_value(temp_values[1].gsub(" ","")).to_s
-#morskie_oko = check_value(temp_values[2].gsub(" ","")).to_s
-#db.query("INSERT INTO temperature (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, LOMNICKY_STIT, KRAKOW, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{lomnica.to_s}', '#{krakow}', '#{xml_date}', '#{datetime}');")
+temp_values = xml_parse(xml_temperature.to_s).split(",")
+goryczkowa = check_value(temp_values[0].gsub(" ","")).to_s
+piec_stawow = check_value(temp_values[1].gsub(" ","")).to_s
+morskie_oko = check_value(temp_values[2].gsub(" ","")).to_s
+db.query("INSERT INTO temperature (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, LOMNICKY_STIT, KRAKOW, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{lomnica.to_s}', '#{krakow}', '#{xml_date}', '#{datetime}');")
 
-#wind_avg_values = xml_parse(xml_windAVG.to_s).split(",")
-#goryczkowa = check_value(wind_avg_values[0].gsub(" ","")).to_s
-#piec_stawow = check_value(wind_avg_values[1].gsub(" ","")).to_s
-#morskie_oko = check_value(wind_avg_values[2].gsub(" ","")).to_s
-#db.query("INSERT INTO wind_speed_averange (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{xml_date}', '#{datetime}');")
+wind_avg_values = xml_parse(xml_windAVG.to_s).split(",")
+goryczkowa = check_value(wind_avg_values[0].gsub(" ","")).to_s
+piec_stawow = check_value(wind_avg_values[1].gsub(" ","")).to_s
+morskie_oko = check_value(wind_avg_values[2].gsub(" ","")).to_s
+db.query("INSERT INTO wind_speed_averange (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{xml_date}', '#{datetime}');")
 
-#wind_max_values = xml_parse(xml_windMAX.to_s).split(",")
-#goryczkowa = check_value(wind_max_values[0].gsub(" ","")).to_s
-#piec_stawow = check_value(wind_max_values[1].gsub(" ","")).to_s
-#morskie_oko = check_value(wind_max_values[2].gsub(" ","")).to_s
-#db.query("INSERT INTO wind_speed_maximum (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{xml_date}', '#{datetime}');")
+wind_max_values = xml_parse(xml_windMAX.to_s).split(",")
+goryczkowa = check_value(wind_max_values[0].gsub(" ","")).to_s
+piec_stawow = check_value(wind_max_values[1].gsub(" ","")).to_s
+morskie_oko = check_value(wind_max_values[2].gsub(" ","")).to_s
+db.query("INSERT INTO wind_speed_maximum (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{xml_date}', '#{datetime}');")
 
 
 wind_dir_values = xml_parse(xml_windDIR.to_s).split(",")
