@@ -35,6 +35,19 @@ def check_value(what)
   end
 end
 
+def wind_direction(value)
+  if value == 0.0 ; return "" ; exit ; end
+
+  #puts value
+  if value > 22 && value <= 67 ; return "NE" ; end
+  if value > 67 && value <= 122 ; return "E" ; end
+  if value > 112 && value <= 157 ; return "SE" ; end
+  if value > 157 && value <= 202 ; return "S" ; end
+  if value > 202 && value <= 247 ; return "SW" ; end
+  if value > 247 && value <= 292 ; return "W" ; end
+  if value > 292 && value <= 337 ; return "NW" ; end
+end
+
 begin
   db = Mysql.new('localhost', 'ruby', 'github', 'topr')
 rescue Mysql::Error
@@ -62,6 +75,9 @@ db.query("INSERT INTO wind_speed_maximum (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, 
 
 wind_dir_values = xml_parse(xml_windDIR.to_s).split(",")
 goryczkowa = check_value(wind_dir_values[0].gsub(" ","")).to_s
+dir_goryczkowa = wind_direction(wind_dir_values[0].gsub(" ","").to_f).to_s
 piec_stawow = check_value(wind_dir_values[1].gsub(" ","")).to_s
+dir_piec_stawow = wind_direction(wind_dir_values[1].gsub(" ","").to_f).to_s
 morskie_oko = check_value(wind_dir_values[2].gsub(" ","")).to_s
-db.query("INSERT INTO wind_direction (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{xml_date}', '#{datetime}');")
+dir_morskie_oko = wind_direction(wind_dir_values[2].gsub(" ","").to_f).to_s
+db.query("INSERT INTO wind_direction (GORYCZKOWA, DIR_GORYCZKOWA, PIEC_STAWOW, DIR_PIEC_STAWOW, MORSKIE_OKO, DIR_MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, '#{dir_goryczkowa}', #{piec_stawow}, '#{dir_piec_stawow}', #{morskie_oko}, '#{dir_morskie_oko}', '#{xml_date}', '#{datetime}');")
