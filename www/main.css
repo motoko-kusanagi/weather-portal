@@ -6,10 +6,10 @@ body {
 
 a:link {
   text-decoration: none;
-  margin-left: 1em;
+  margin-left: 0em;
   font-family: 'Noto Sans', sans-serif;
-  font-style: initial;
-  font-weight: 700;	
+  font-style: italic;
+  font-weight: 400;	
   color: black;
 }
 
@@ -33,4 +33,12 @@ h1 {
   font-family: 'Noto Sans', sans-serif;
   font-style: initial;
   font-weight: 700;
+}
+
+footer {
+  font-size: 70%;
+  font-family: 'Noto Sans', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  margin-left: 5em;
 }

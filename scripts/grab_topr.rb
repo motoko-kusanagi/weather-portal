@@ -36,26 +36,16 @@ def check_value(what)
 end
 
 def wind_direction(value)
-  if value == 0.0
-    return "NULL"
-    exit
-  end
+  if value == 0.0 ; return "" ; exit ; end
 
-  if value > 22 && value <= 67
-    return "NE"
-  elseif value > 67 && value <= 122
-    return "E"
-  elseif value > 112 && value <= 157
-    return "SE"
-  elseif value > 157 && value <= 202
-    return "S"
-  elseif value > 202 && value <= 247
-    return "SW"
-  elseif value > 247 && value <= 292
-    return "W"
-  elseif value > 292 && value <= 337
-    return "NW"
-  end
+  #puts value
+  if value > 22 && value <= 67 ; return "NE" ; end
+  if value > 67 && value <= 122 ; return "E" ; end
+  if value > 112 && value <= 157 ; return "SE" ; end
+  if value > 157 && value <= 202 ; return "S" ; end
+  if value > 202 && value <= 247 ; return "SW" ; end
+  if value > 247 && value <= 292 ; return "W" ; end
+  if value > 292 && value <= 337 ; return "NW" ; end
 end
 
 begin
@@ -82,7 +72,6 @@ goryczkowa = check_value(wind_max_values[0].gsub(" ","")).to_s
 piec_stawow = check_value(wind_max_values[1].gsub(" ","")).to_s
 morskie_oko = check_value(wind_max_values[2].gsub(" ","")).to_s
 db.query("INSERT INTO wind_speed_maximum (GORYCZKOWA, PIEC_STAWOW, MORSKIE_OKO, DATE_XML, DATE_SYSTEM) VALUES (#{goryczkowa}, #{piec_stawow}, #{morskie_oko}, '#{xml_date}', '#{datetime}');")
-
 
 wind_dir_values = xml_parse(xml_windDIR.to_s).split(",")
 goryczkowa = check_value(wind_dir_values[0].gsub(" ","")).to_s
